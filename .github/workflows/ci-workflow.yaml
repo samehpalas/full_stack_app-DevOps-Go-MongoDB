@@ -13,13 +13,20 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Configure AWS credentials
-      id: ecr
-      uses: jwalton/gh-ecr-login@v1
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
       with:
-         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-         region: us-east-1
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Login to ECR
+      id: ecr
+      uses: rahulrkr08/gh-aws-deploy@v3
+      with:
+         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws_region: us-east-1
 
     - name: Build, tag, and push image to Amazon ECR
       env:
