@@ -28,7 +28,7 @@ jobs:
          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          aws_region: us-east-1
 
-    - name: Build, tag, and push image to Amazon ECR
+    - name: Build, tag and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: goapp-survey
