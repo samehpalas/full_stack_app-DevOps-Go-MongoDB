@@ -15,6 +15,7 @@ spec:
       labels:
         app: go-app
     spec:
+      imagePullPolicy: Always
       containers:
         - name: go-app
           image: 239191860481.dkr.ecr.us-east-1.amazonaws.com/goapp-survey:latest # Make sure to update the image name to match the build.sh script 
