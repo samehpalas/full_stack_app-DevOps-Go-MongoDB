@@ -44,7 +44,7 @@ variable "nginx_ingress_values" {
       enabled: false
     EOF
 }
-
+#install ingress by helm via terraform
 resource "helm_release" "nginx_ingress" {
   name             = "nginx-ingress"
   repository       = "https://kubernetes.github.io/ingress-nginx"
